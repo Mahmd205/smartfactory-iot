@@ -1,4 +1,4 @@
-# Module 1 Assignment — Protocol Comparison Report
+# Module 2 Assignment — SmartFactory IoT Protocol Comparison Report
 
 **Student Name:** Mohamed Ahmed
 **Student ID:**   101031735
@@ -20,13 +20,14 @@
 ## 5.2 CoAP–HTTP Proxy Mapping
 
 > Run `pytest tests/coap/test_proxy.py -v -s` and record the observed HTTP headers.
+**Note:** The assignment PDF mentions `tests/coap/test_proxy.py`, but this file was not included in the provided project test folder. Therefore, the automated proxy test could not be executed. The mapping below is based on the CoAP response fields observed in packet capture and the implemented JSON resources.
 
 | HTTP Header | CoAP Option | Your Observed Value |
 |-------------|-------------|---------------------|
-| Content-Type | | |
-| Cache-Control: max-age | | |
-| ETag | | |
-| Location | | |
+| Content-Type | Content-Format | `application/json`, mapped from CoAP Content-Format `50` |
+| Cache-Control: max-age | Max-Age | Not observed / not set by the implemented resource |
+| ETag | ETag | Not observed / not set by the implemented resource |
+| Location | Location-Path / Location-Query | Not observed because the GET response does not create a new resource |
 
 ---
 
