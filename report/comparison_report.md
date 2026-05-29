@@ -17,6 +17,17 @@
 | CoAP NON | 50 | 36 | 28.0% | 0 | 1.9 |
 | CoAP CON | 50 | 46 | 8.0% | 0 | 46.2 |
 | AMQP (skipped) | - | - | - | - | - |
+
+**Measurement note:** Self-contained Python measurement; MQTT duration=60s; messages_per_qos=100; CoAP requests per mode=50; duplicates counted as repeated MQTT sequence numbers and repeated CoAP response Message IDs; netem enabled on lo: 10.0% packet loss.
+
+| Protocol / QoS | Sent | Received | Lost (%) | Duplicates | Avg Latency (ms) |
+|----------------|------|----------|----------|------------|------------------|
+| MQTT QoS 0 | 100 | 100 | 0.0% | 0 | 127.7 |
+| MQTT QoS 1 | 100 | 100 | 0.0% | 0 | 181.0 |
+| MQTT QoS 2 | 100 | 100 | 0.0% | 0 | 293.2 |
+| CoAP NON | 50 | 43 | 14.0% | 0 | 1.6 |
+| CoAP CON | 50 | 32 | 36.0% | 0 | 189.2 |
+| AMQP (skipped) | - | - | - | - | - |
 ## 5.2 CoAP–HTTP Proxy Mapping
 
 > Run `pytest tests/coap/test_proxy.py -v -s` and record the observed HTTP headers.
