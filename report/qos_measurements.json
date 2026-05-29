@@ -1,0 +1,61 @@
+{
+  "measurement_note": "Self-contained Python measurement; MQTT duration=60s; messages_per_qos=100; CoAP requests per mode=50; duplicates counted as repeated MQTT sequence numbers and repeated CoAP response Message IDs; netem disabled.",
+  "mqtt": {
+    "0": {
+      "sent": 100,
+      "received": 100,
+      "received_total_including_duplicates": 100,
+      "lost": 0,
+      "lost_percent": 0.0,
+      "duplicates": 0,
+      "mqtt_dup_flag_count": 0,
+      "avg_latency_ms": 181.20790481567383
+    },
+    "1": {
+      "sent": 100,
+      "received": 100,
+      "received_total_including_duplicates": 100,
+      "lost": 0,
+      "lost_percent": 0.0,
+      "duplicates": 0,
+      "mqtt_dup_flag_count": 0,
+      "avg_latency_ms": 218.82036924362183
+    },
+    "2": {
+      "sent": 100,
+      "received": 100,
+      "received_total_including_duplicates": 100,
+      "lost": 0,
+      "lost_percent": 0.0,
+      "duplicates": 0,
+      "mqtt_dup_flag_count": 0,
+      "avg_latency_ms": 249.76598978042603
+    }
+  },
+  "coap": {
+    "NON": {
+      "sent": 50,
+      "received": 36,
+      "received_total_including_duplicates": 36,
+      "lost": 14,
+      "lost_percent": 28.000000000000004,
+      "duplicates": 0,
+      "duplicate_rule": "same CoAP response Message ID observed more than once",
+      "response_message_ids_observed": 36,
+      "responses_without_mid": 0,
+      "avg_latency_ms": 1.8901096449957953
+    },
+    "CON": {
+      "sent": 50,
+      "received": 46,
+      "received_total_including_duplicates": 46,
+      "lost": 4,
+      "lost_percent": 8.0,
+      "duplicates": 0,
+      "duplicate_rule": "same CoAP response Message ID observed more than once",
+      "response_message_ids_observed": 46,
+      "responses_without_mid": 0,
+      "avg_latency_ms": 46.23617296633513
+    }
+  }
+}

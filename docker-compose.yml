@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+
+  # ── MQTT Broker (Mosquitto) ────────────────────────────────────────────────
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: smartfactory-mosquitto
+    ports:
+      - "1883:1883"    # Plain MQTT
+      - "9001:9001"    # WebSocket (optional)
+    volumes:
+      - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mosquitto-data:/mosquitto/data
+      - mosquitto-logs:/mosquitto/log
+    restart: unless-stopped
+
+  # ── CoAP does not require a broker — the Python server (Task 2) runs locally ─
+
+  # ── InfluxDB (optional — for time-series storage extension) ───────────────
+  influxdb:
+    image: influxdb:2.7
+    container_name: smartfactory-influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: adminpassword
+      DOCKER_INFLUXDB_INIT_ORG: smartfactory
+      DOCKER_INFLUXDB_INIT_BUCKET: iot-telemetry
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: smartfactory-token-001
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+    restart: unless-stopped
+    profiles:
+      - optional   # start with: docker compose --profile optional up -d
+
+volumes:
+  mosquitto-data:
+  mosquitto-logs:
+  influxdb-data:
