@@ -56,6 +56,8 @@ python scripts/generate_qos_table.py --apply-netem --loss-percent 10
 
 MQTT runs over TCP, so ordinary packet loss on the loopback interface may be recovered by TCP before MQTT sees it. Use the generated measurement note in `report/comparison_report.md` so the report is honest about how the table was produced. The QoS script auto-starts the CoAP server if needed and counts duplicates as repeated MQTT sequence numbers and repeated CoAP response Message IDs.
 
+# Run Project Step by Step
+
 ## Step 1 — Create and activate the Python environment
 
 ### Windows PowerShell
@@ -184,14 +186,6 @@ report/packet_analysis.md
 report/packet_analysis_values.json
 ```
 
-Open `report/packet_analysis.md` and search for:
-
-```text
-(not found)
-```
-
-If you see `(not found)`, open the `.pcap` in Wireshark and manually fill that field.
-
 ---
 
 ## Step 7 — Run the required tests
@@ -200,24 +194,5 @@ If you see `(not found)`, open the `.pcap` in Wireshark and manually fill that f
 python -m pytest tests/ -v --tb=short
 ```
 
-If only MQTT and CoAP are required in your assignment copy, AMQP-related tests can be ignored only if your instructor confirmed AMQP is ignored.
-
 ---
 
-## Step 8 — Final files to submit
-
-Make sure these files are complete:
-
-```text
-src/mqtt/publisher.py
-src/mqtt/subscriber.py
-src/coap/server.py
-src/coap/observer.py
-captures/mqtt.pcap
-captures/coap.pcap
-report/packet_analysis.md
-report/comparison_report.md
-README.md
-```
-
-AMQP files and `captures/amqp.pcap` are intentionally skipped in this project version because your assignment copy marks AMQP as ignored.
